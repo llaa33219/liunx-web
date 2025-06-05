@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browser Linux - Linux in Browser</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Main screen container -->
+    <div id="screen_container" class="screen-container" style="display: none;">
+        <div></div>
+    </div>
+
+    <!-- Floating control panel -->
+    <div id="floating_controls" class="floating-controls" style="display: none;">
+        <div class="status-display">
+            <span>Status: </span><span id="status">Ready</span>
+            <span> | Memory: 512MB | CPU: i686</span>
+        </div>
+        <button id="startBtn" class="btn btn-primary">🚀 Start</button>
+        <button id="resetBtn" class="btn btn-secondary" disabled>🔄 Restart</button>
+        <button id="pauseBtn" class="btn btn-secondary" disabled>⏸️ Pause</button>
+        <button id="screenshotBtn" class="btn btn-secondary" disabled>📸 Screenshot</button>
+        <button id="fullscreenBtn" class="btn btn-secondary" disabled>🖥️ Fullscreen</button>
+        <button id="hideControlsBtn" class="btn btn-secondary">👁️ Hide</button>
+    </div>
+
+    <!-- Loading overlay -->
+    <div id="loading_overlay" class="loading-overlay">
+        <div class="loading-text">🐧 Linux Booting...</div>
+        <div class="loading-progress">
+            <div id="loading_bar" class="loading-bar"></div>
+        </div>
+        <div id="loading_details" class="loading-details">
+            Initializing system...
+        </div>
+    </div>
+
+    <!-- Linux selection screen -->
+    <div id="distro_selection" class="loading-overlay">
+        <div class="loading-text">🐧 Choose Your Linux Distribution</div>
+        <div class="loading-details" style="font-size: 16px; margin-bottom: 30px;">
+            Select a Linux distribution to run in your browser
+        </div>
+        
+        <div id="distro_loading" class="loading-details" style="display: none;">
+            <div style="margin-bottom: 10px;">Loading available distributions...</div>
+            <div class="loading-progress">
+                <div class="loading-bar" style="width: 100%; animation: pulse 1.5s ease-in-out infinite;"></div>
+            </div>
+        </div>
+        
+        <div id="distro_grid" class="distro-grid" style="display: none;">
+            <!-- 동적으로 생성됨 -->
+        </div>
+        
+        <div id="distro_error" class="loading-details" style="display: none; color: #ff6b6b;">
+            Failed to load Linux distributions. Please try again.
+            <br><br>
+            <button id="retry_distros" class="btn btn-secondary">🔄 Retry</button>
+        </div>
+    </div>
+
+    <!-- Start screen (기본값으로 숨김) -->
+    <div id="start_screen" class="loading-overlay" style="display: none;">
+        <div class="loading-text">🖥️ Browser Linux Emulator</div>
+        <div class="loading-details" style="font-size: 18px; margin-bottom: 40px;">
+            Run a complete GUI Linux desktop in your browser
+        </div>
+        <button id="main_start_btn" class="btn btn-main">
+            🚀 Start Linux
+        </button>
+    </div>
+
+    <!-- v86 library loading -->
+    <script src="libv86.js" onload="console.log('✅ v86 library loaded successfully');" onerror="console.error('❌ v86 library load failed');"></script>
+    <script src="script.js"></script>
+</body>
+</html> 
